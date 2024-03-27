@@ -140,7 +140,7 @@ The second key (in this example called `YourPurposeKey`) should match the purpos
 Add the following to your `pubspec.yaml` file:
 
     dependencies:
-      location_picker_flutter_map: ^1.2.1
+      location_picker_flutter_map: ^3.0.1
 
 ## Simple Usage
 
@@ -166,7 +166,9 @@ To use is simple, just call the widget bellow. You need to pass the onPicked met
 
 Now if you press Set Current Location button, you will get the pinned location by onPicked method.
 
-In the onPicked method you will receive pickedData.
+Or you can use onChanged method to get the picked data whenever user change marker location on map.
+
+The onPicked and onChanged methods return pickedData.
 
 pickedData has three properties.
 
@@ -187,7 +189,9 @@ For example
             selectLocationButtonStyle: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.blue),
             ),
+            selectedLocationButtonTextstyle: const TextStyle(fontSize: 18),
             selectLocationButtonText: 'Set Current Location',
+            selectLocationButtonLeadingIcon: const Icon(Icons.check),
             initZoom: 11,
             minZoomLevel: 5,
             maxZoomLevel: 16,
@@ -198,6 +202,12 @@ For example
               print(pickedData.latLong.longitude);
               print(pickedData.address);
               print(pickedData.addressData['country']);
+            },
+            onChanged: (pickedData) {
+              print(pickedData.latLong.latitude);
+              print(pickedData.latLong.longitude);
+              print(pickedData.address);
+              print(pickedData.addressData);
             })
 
 You can get latitude, longitude, address and addressData like that.
