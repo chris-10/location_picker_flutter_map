@@ -39,5 +39,9 @@ class PickedData {
   final String address;
   final Map<String, dynamic> addressData;
 
-  const PickedData(this.latLong, this.address, this.addressData);
+  /// The full nominatim response
+  final dynamic fullResponse;
+
+  const PickedData(
+      this.latLong, this.address, this.addressData, this.fullResponse);
 }
